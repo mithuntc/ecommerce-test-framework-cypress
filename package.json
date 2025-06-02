@@ -2,7 +2,8 @@
   "devDependencies": {
     "cypress": "^14.4.0",
     "cypress-iframe": "^1.0.1",
-    "cypress-mochawesome-reporter": "^3.8.2"
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "multiple-cucumber-html-reporter": "^3.9.2"
   },
   "cypress-cucumber-preprocessor": {
     "json": {

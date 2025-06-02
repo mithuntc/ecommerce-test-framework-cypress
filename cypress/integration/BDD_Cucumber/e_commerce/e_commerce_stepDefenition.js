@@ -1,33 +1,42 @@
-const { Given, When, Then } = require("@badeball/cypress-cucumber-preprocessor");
-import Homepage from "../../support/pageObjects/Homepage";
-const homePage = new Homepage();
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor"
+import HomePage from '../../../support/pageObjects/HomePage';
+const homePage = new HomePage();
+
 Given('I am on Ecommerce Page', () => {
-    const url = Cypress.env('baseUrl') + '/loginpagePractise/';
-    homePage.goTo(url);
+    homePage.goTo(Cypress.env('url') + "/loginpagePractise/")
 })
 
-When('I login to the application', function () {
-    this.productPage = homePage.login(this.data.username, this.data.password);
-    this.productPage.pageValidation();
-    this.productPage.getCardCount().should('have.length', 4);// count of cards
-    this.productPage.selectFirstProduct(); // select first product
+When('I login to the application', function ()  {
+    this.productPage = homePage.login(this.data.username, this.data.password)
+    this.productPage.pageValidation()
+    this.productPage.getCardCount().should('have.length', 4)
+})
+
+When('I login to the application portal',function(dataTable){
+    this.productPage = homePage.login(dataTable.rawTable[1][0],dataTable.rawTable[1][1]) 
+    this.productPage.pageValidation()
+    this.productPage.getCardCount().should('have.length', 4)
+
 })
 
 When('I add items to Cart and checkout', function () {
-    this.productPage.selectFirstProduct(); // select first product
-    this.productPage.selectProduct(this.data.productName);
-    this.cartPage = this.productPage.gotoCart();
+    this.productPage.selectProduct(this.data.productName)
+    this.productPage.selectFirstProduct()
+    this.cartPage = this.productPage.gotoCart()
 })
 
+
 When('Validate the total price limit', function () {
-    this.cartPage.sumOfProducts().then((sum) => {
-        //assert that the sum of products is less than 10000
-        expect(sum).to.be.lessThan(1000000);
-    });
+    this.cartPage.sumOfProducts().then(function (sum) {
+        expect(sum).to.be.lessThan(200000);
+    })
+
 })
 
 Then('select the country submit and verify Thankyou', function () {
-    const confirmationPage = this.cartPage.checkout();
-    confirmationPage.submitFormDetails();
-    confirmationPage.alertMessage().should('contain', ' Thank you! Your order will be delivered in next few weeks :-');
+    const confirmationPage = this.cartPage.checkout()
+    confirmationPage.submitFormDetails()
+    confirmationPage.alertMessage().should('contain', 'Success')
+
 })
+

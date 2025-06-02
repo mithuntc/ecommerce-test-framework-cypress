@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import Homepage from "../../support/pageObjects/Homepage";
+import Homepage from '../../support/pageObjects/HomePage';
 
 describe('E-commerce End to End Test Suite', function () {
     before(() => {
