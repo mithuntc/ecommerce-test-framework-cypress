@@ -4,10 +4,20 @@
     "cypress-iframe": "^1.0.1",
     "cypress-mochawesome-reporter": "^3.8.2"
   },
+  "cypress-cucumber-preprocessor": {
+    "json": {
+      "enabled": true,
+      "output": "cypress/cucumberReports/results.json"
+    }
+  },
   "scripts": {
     "test-open": "npx cypress open",
     "test-headed-run": "npx cypress run --browser chrome --headed",
     "test-headless-run": "npx cypress run",
     "flipkart-test": "npx cypress run --spec \"cypress/integration/e_commerce_flipkart/*\""
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^22.0.1",
+    "@cypress/browserify-preprocessor": "latest"
   }
 }
