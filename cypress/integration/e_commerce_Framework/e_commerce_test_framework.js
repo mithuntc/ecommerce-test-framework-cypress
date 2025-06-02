@@ -11,7 +11,8 @@ describe('E-commerce End to End Test Suite', function () {
         });
     });
     it('End to End testing', () => {
-        this.homePage.goTo('https://rahulshettyacademy.com/loginpagePractise/');
+        const url = Cypress.env('baseUrl')+'/loginpagePractise/';
+        this.homePage.goTo(url);
         const productPage = this.homePage.login(this.data.username, this.data.password);
         productPage.pageValidation();
         productPage.getCardCount().should('have.length', 4);// count of cards
