@@ -2,7 +2,7 @@
 describe('Mocking HTTP Test Suite', function () {
     it('Mocking HTTP and testing', () => {
         cy.visit('https://rahulshettyacademy.com/angularAppdemo/');
-       
+
         cy.intercept({
             method: 'GET',
             url: 'https://rahulshettyacademy.com/Library/GetBook.php?AuthorName=shetty'
@@ -18,7 +18,10 @@ describe('Mocking HTTP Test Suite', function () {
         // Click on the 'Library' button
         cy.get('button.btn.btn-primary').click();
         // Wait for the mocked HTTP request to complete
-        cy.wait('@bookRetrievalData'); // Wait for 2 seconds to ensure the request is processed
-        cy.get('p').should('have.text', 'Oops only 1 Book available'); // Verify the text on the page
+        cy.wait('@bookRetrievalData').then(({ request, response }) => {
+            cy.get('tr').should('have.length', response.body.length + 1)
+        })
+        cy.get('p').should('have.text', 'Oops only 1 Book available')
     })
+
 })
