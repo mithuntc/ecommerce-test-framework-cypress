@@ -32,3 +32,22 @@ Cypress.Commands.add('submitFormDetails', () => {
         //submit order
         cy.get('input[value="Purchase"]').click();
 });
+
+// common login command
+Cypress.Commands.add('login', () => {
+        const email = 'apputc8@gmail.com';
+        const password = 'Arya@123';
+        cy.request({
+            method: 'POST',
+            url: 'https://rahulshettyacademy.com/api/ecom/auth/login', // replace with your login API endpoint
+            body: {
+                userEmail: email,
+                userPassword: password
+            }
+        }).then(function(response){
+            expect(response.status).to.eq(200);
+            Cypress.env('token', response.body.token); // set token in Cypress environment variable used it in everywhere
+            //window.localStorage.setItem('token', response.body.token); // store token in local storage
+        });
+
+})
