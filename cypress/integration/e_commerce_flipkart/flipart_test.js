@@ -7,6 +7,9 @@ describe('Flipkart E-commerce Application Test Suite', function () {
             cy.visit(url);
         })
         //entering username
-        cy.get('input[class="r4vIwl BV+Dqf"]').type('midhuntc783@gmail.com');
+        cy.get('input[class="r4vIwl BV+Dqf"]').type('mithuntc783@gmail.com');
+        cy.get('button[class="QqFHMw twnTnD _7Pd1Fp"]').click();
+        //navigating to gmail page
+        cy.visit('https://mail.google.com/mail/u/0/#inbox');
     })
 })
