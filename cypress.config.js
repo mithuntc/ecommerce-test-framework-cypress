@@ -39,6 +39,6 @@ module.exports = defineConfig({
   e2e: {
   setupNodeEvents,
     specPattern: 'cypress/integration/e_commerce_Framework/*.js',
-
+    //specPattern: 'cypress/integration/e_commerce_flipkart/*.js',
   },
 });
