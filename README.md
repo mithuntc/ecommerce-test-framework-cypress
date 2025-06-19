@@ -41,7 +41,7 @@ This repository contains a complete end-to-end test automation framework for an 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/ecommerce-test-framework-cypress.git
+   git clone https://github.com/mithuntc/ecommerce-test-framework-cypress.git
    cd ecommerce-test-framework-cypress
 2. npm install
 
