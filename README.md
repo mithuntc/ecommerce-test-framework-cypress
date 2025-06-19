@@ -48,3 +48,4 @@ This repository contains a complete end-to-end test automation framework for an 
 3. npx cypress open     # For interactive mode
 npx cypress run      # For headless run
 
+📌 **Note**: This test framework is actively being developed. Additional features and enhancements will be added progressively.
